@@ -1,0 +1,50 @@
+{
+    "name": "Control Surface",
+    "version": "2.1.0",
+    "description": "Arduino library for creating MIDI controllers and other MIDI devices.",
+    "keywords": [
+        "midi",
+        "midi-controller",
+        "midi-over-usb",
+        "usb",
+        "midi-over-ble",
+        "bluetooth",
+        "vu-meter",
+        "oled"
+    ],
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/tttapa/Control-Surface.git"
+    },
+    "authors": [
+        {
+            "name": "Pieter P",
+            "maintainer": true
+        }
+    ],
+    "license": "GPL-3.0-or-later",
+    "export": {
+        "exclude": [
+            ".github",
+            "build",
+            "docs",
+            "doxygen",
+            "mock",
+            "scripts",
+            "test",
+            "tools"
+        ]
+    },
+    "frameworks": "arduino",
+    "platforms": [
+        "atmelavr",
+        "atmelmegaavr",
+        "atmelsam",
+        "espressif32",
+        "espressif8266",
+        "nordicnrf52",
+        "teensy",
+        "renesas-ra",
+        "raspberrypi"
+    ]
+}
