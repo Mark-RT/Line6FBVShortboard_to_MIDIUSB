@@ -106,16 +106,17 @@ void onKeyReleased(byte key, byte state)
 
 void onCtrlChanged(byte ctrl, byte value)
 {
-  /*Serial.print(F("Педаль "));
-  Serial.print(ctrl == LINE6FBV_CC_PDL1 ? "Wah" : "Volume");
-  Serial.print(F(" = "));
-  Serial.println(value);*/
-  byte cc_value = map(value, 20, 127, 0, 127); // можна додатково обробити значення педалі тут
-  if (ctrl == LINE6FBV_CC_PDL1)
-  {
-    usbmidi.sendControlChange({LINE6FBV_CC_PDL1, Channel_1}, value);
+  // обмежуємо нижній поріг
+  if (value < 23) value = 20;
+
+  // мапування педалі (20–127 → 0–127)
+  byte cc_value = map(value, 20, 127, 0, 127);
+
+  if (ctrl == LINE6FBV_CC_PDL1) {
+    usbmidi.sendControlChange({LINE6FBV_CC_PDL1, Channel_1}, cc_value);
   }
 }
+
 
 void onHeartbeat()
 {
@@ -149,6 +150,7 @@ void setup()
   delay(200);
   fbv.setDisplayTitle("Okay let's GO");
   fbv.updateUI();
+  clean_all_led();
 }
 
 // ==== LOOP ====
