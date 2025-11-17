@@ -114,13 +114,15 @@ void onKeyPressed(byte key)
     if (increment_snapshot >= 7)
       increment_snapshot = 7;
     usbmidi.sendControlChange({69, Channel_1}, increment_snapshot);
+    //usbmidi.sendProgramChange(Channel_1, 20);
     clean_all_led();
     break;
   case 13: // BANK DOWN
     increment_snapshot--;
     if (increment_snapshot <= 0)
       increment_snapshot = 0;
-    usbmidi.sendControlChange({69, Channel_1}, increment_snapshot);
+     usbmidi.sendControlChange({69, Channel_1}, increment_snapshot);
+    //usbmidi.sendProgramChange(Channel_1, 18);
     clean_all_led();
     break;
 
